@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/head :: head"/>
+</head>
+
+<body>
+<div th:replace="/fragments/header::header"></div>
+<div class="container">
+    <div th:replace="/fragments/sorting :: sorting(baseUrl='/home')"></div>
+    <div class="starter-template panel" th:each="movie : ${moviesPage}">
+        <div th:replace="/fragments/movie :: movie"/>
+    </div>
+    <div th:replace="/fragments/pagination :: pagination(baseUrl='/home')"></div>
+    <div th:replace="/fragments/footer :: footer"/>
+</div>
+</body>
+</html>

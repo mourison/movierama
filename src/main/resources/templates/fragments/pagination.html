@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div th:fragment="pagination">
+    <div class="pagination" th:with="baseUrl=${baseUrl}">
+        <div class="pagination" >
+            <p >Select page: </p>
+            <span class="pl-1 pr-1" th:if="${moviesPage.totalPages > 0}" th:each="pageNumber : ${pageNumbers}">
+                <a class="p-5" th:href="@{${baseUrl}(pageSize=${moviesPage.size}, page=${pageNumber - 1}, sortBy=${sortBy}, direction=${direction})}"
+                   th:text="${pageNumber}"
+                   th:class="${pageNumber==moviesPage.number + 1} ? active"></a>
+        </span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+</head>
+<body>
+<div th:fragment="reactions">
+        <div class="row" sec:authorize="isAuthenticated()">
+            <a th:class="' col-md-6'" th:disabled="${movie.user.email == #authentication.getName()}" th:href="@{'/movies/{id}/react'(id=${movie.movieId}, react='like')}">
+                <button th:disabled="${movie.user.email == #authentication.getName()}" type="button" class="btn btn-info btn-block" th:text="'Likes '+${movie.likes}">Like</button>
+            </a>
+
+            <a th:disabled="${movie.user.email == #authentication.getName()}" th:href="@{'/movies/{id}/react'(id=${movie.movieId}, react='hate')}" class="col-md-6">
+                <button th:disabled="${movie.user.email == #authentication.getName()}" type="button" class="btn btn-dark btn-block" th:text="'Hates '+${movie.hates}">Hate</button>
+            </a>
+
+            <div class="container pl-3 mt-2 text-info" th:hidden="${!movie.isLikedByUser(#authentication.getName()) && !movie.isHatedByUser(#authentication.getName())}">
+                <div th:hidden="${movie.isLikedByUser(#authentication.getName())}">You like This Movie</div>
+                <div th:hidden="${movie.isHatedByUser(#authentication.getName())}">You hate This Movie</div>
+            </div>
+
+        </div>
+
+        <div class="row" sec:authorize="isAnonymous()">
+            <a th:disabled="true" class="col-md-6"><button th:disabled="true" type="button" class="btn btn-dark btn-block" th:text="'Likes  '+${movie.likes}">Like</button></a>
+            <a th:disabled="true" class="col-md-6"><button th:disabled="true" type="button" class="btn btn-dark btn-block" th:text="'Hates  '+${movie.hates}">Hate</button></a>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div th:fragment="sorting">
+
+    <div class="mt-2 mb-2" th:with="baseUrl=${baseUrl}">
+        <ul class="list-inline mb-0">
+            <li class="list-inline-item" >Order By: </li>
+            <li class="list-inline-item"><a class="social-icon text-xs-center" th:href="@{${baseUrl} (sortBy='createdAt', direction='DESC')}">Date</a></li>
+            <li class="list-inline-item"><a class="social-icon text-xs-center" th:href="@{${baseUrl} (sortBy='createdAt', direction='ASC')}">Older</a></li>
+            <li class="list-inline-item"><a class="social-icon text-xs-center" th:href="@{${baseUrl} ( sortBy='likesCount', direction='DESC')}" >Likes</a></li>
+            <li class="list-inline-item"><a class="social-icon text-xs-center" th:href="@{${baseUrl} ( sortBy='hatesCount', direction='DESC')}">Hates</a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

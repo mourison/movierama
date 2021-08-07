@@ -1,0 +1,26 @@
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div th:fragment="movie">
+
+    <div class="container mt-3" >
+        <div class="row">
+            <div class="col-sm-5 bg-info my-bg-info pt-2 pb-2 text-white rounded">
+                <h5><a th:text="${movie.title}" th:href="@{'/movies/' + ${movie.movieId}}">Title</a></h5>
+                <span th:text="'Posted by'"></span>
+                <a th:text="${movie.user.email}" th:href="@{'/movies?userId=' + ${movie.user.id}}"></a>
+                <span th:text="${movie.duration} + ' days ago '"></span>
+                <div>
+                    <p th:text="${movie.description}">Body</p>
+                    <br>
+                </div>
+                <div th:replace="/fragments/reactions :: reactions"/>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
