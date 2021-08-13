@@ -5,11 +5,9 @@ import gr.tsamtsouris.movierama.entities.Reaction
 import gr.tsamtsouris.movierama.entities.User
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
-import org.springframework.test.annotation.DirtiesContext
 import spock.lang.Specification
 
 @DataJpaTest
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class ReactionRepositorySpec extends Specification {
 
     @Autowired
